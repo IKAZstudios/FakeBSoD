@@ -43,9 +43,10 @@ def bsod_fake():
         label.config(image=p)
         win.update()
         win.update_idletasks()
-    time.sleep(3)
+    time.sleep(4)
     os.system("shutdown /f /t 0")
 
-bsod_fake()
+if __name__ == "__main__":
+    bsod_fake()
 
 win.mainloop()
