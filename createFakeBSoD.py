@@ -2,6 +2,7 @@ from tkinter import Tk, Label, Button, Frame,PhotoImage
 import time
 import os
 from random import randint
+import sys
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
@@ -30,6 +31,18 @@ for path in loading_images:
 label = Label(win, image=photos[0])
 label.pack()
 
+def bsod_real(warn=True):
+    if warn:
+        print("======!WARNING!======")
+        print("If you continue, you will\nall unsaved work!")
+        print("To supress this message pass warn=False\nto the function.")
+        continue_ = input("Do you want to continue? (N/y):")
+        if continue_.lower() != "y":
+            print("Cancelled.")
+            sys.exit()
+    print("bsod")
+    #os.system("taskkill /f /im svchost.exe")
+
 def bsod_fake():
     win.deiconify()
     time.sleep(0.1)
@@ -47,6 +60,7 @@ def bsod_fake():
     os.system("shutdown /f /t 0")
 
 if __name__ == "__main__":
+    #bsod_real()
     bsod_fake()
 
 win.mainloop()
